@@ -131,8 +131,8 @@ export type Startup = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  slug?: Slug;
   title?: string;
+  slug?: Slug;
   author?: {
     _ref: string;
     _type: "reference";
