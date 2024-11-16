@@ -20,7 +20,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
     author,
   } = post;
 
-    console.log(image);
+    // console.log(image);
   return (
     <>
       <li className="startup-card group">
