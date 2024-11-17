@@ -17,7 +17,7 @@ export const createPitch = async (
       error: "Not signed in",
       status: "ERROR",
     });
-
+    console.log(session);
   const { title, description, category, link } = Object.fromEntries(
     Array.from(form).filter(([key]) => key !== "pitch"),
   );
@@ -36,7 +36,7 @@ export const createPitch = async (
       },
       author: {
         _type: "reference",
-        _ref: session?._id,
+        _ref: session?.id,
       },
       pitch,
     };

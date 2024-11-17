@@ -23,6 +23,7 @@ const page = async ({ params }: { params: Promise<{ id?: string }> }) => {
     }),
   ]);
 
+  console.log(post);
   if (!post) return notFound();
 
   const parsedMarkdownPitch = md.render(post?.pitch || "");
@@ -48,8 +49,8 @@ const page = async ({ params }: { params: Promise<{ id?: string }> }) => {
               href={`/user/${post.author?._id}`}
               className="flex gap-2 items-center mb-3"
             >
-              <Image
-                src={post.author.image}
+              <img
+                src={post.author?.image}
                 alt="avatar"
                 width={64}
                 height={64}
@@ -57,9 +58,9 @@ const page = async ({ params }: { params: Promise<{ id?: string }> }) => {
               />
 
               <div>
-                <p className="text-20-medium">{post.author.name}</p>
+                <p className="text-20-medium">{post.author?.name}</p>
                 <p className="text-16-medium !text-black-300">
-                  @{post.author.username}
+                  @{post.author?.username}
                 </p>
               </div>
             </Link>

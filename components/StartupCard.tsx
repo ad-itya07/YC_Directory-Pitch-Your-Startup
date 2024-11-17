@@ -20,6 +20,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
     author,
   } = post;
 
+  // console.log(_id);
     // console.log(image);
   return (
     <>
@@ -44,9 +45,9 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
           </div>
 
           <Link href={`/user/${author?._id}`}>
-            <Image
+            <img
               src={author?.image}
-              alt="placeholder"
+              alt={author?.name}
               width={48}
               height={48}
               className="rounded-full"
