@@ -54,7 +54,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
     async session({ session, token }) {
       console.log(token);
-      Object.assign(session, { id: token.id});
+      Object.assign(session, { id: token._id});
       console.log(session);
       return session;
 
