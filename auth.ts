@@ -3,11 +3,13 @@ import GitHub from "next-auth/providers/github";
 import { AUTHOR_BY_GITHUB_ID_QUERY } from "@/lib/queries";
 import { client } from "@/sanity/lib/client";
 import { writeClient } from "@/sanity/lib/write-client";
-import { profile } from "console";
 
-let userId : string;
+// let userId : string;
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  providers: [GitHub],
+  providers: [GitHub({
+    clientId: process.env.GITHUB_ID!,
+    clientSecret: process.env.GITHUB_SECRET!,
+  })],
   callbacks: {
     async signIn({
       user: { name, email, image },
@@ -18,7 +20,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         .fetch(AUTHOR_BY_GITHUB_ID_QUERY, {
           id,
         });
-        console.log(id);
+        // console.log(id);
       if (!existingUser) {
         await writeClient.create({
           _type: "author",
@@ -31,7 +33,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         });
       }
 
-      userId = id;
+      // userId = id;
       return true;
     },
 
