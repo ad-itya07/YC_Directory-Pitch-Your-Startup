@@ -38,7 +38,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
 
     async jwt({ token, account, profile }) {
-      // console.log(token);
+      console.log(token);
       if (account && profile) {
         const user = await client
           .withConfig({ useCdn: false })
@@ -53,7 +53,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
 
     async session({ session, token }) {
-      // console.log(token);
+      console.log(token);
       Object.assign(session, { id: token._id , _id: token.id});
       // console.log(session);
       return session;
