@@ -46,16 +46,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             id: profile?.id,
           });
 
-        token.id = user?._id;
-        // token.id = user?.id;
+        token._id = user?._id;
+        token.id = user?.id;
       }
       return token;
     },
 
     async session({ session, token }) {
-      console.log(token);
-      Object.assign(session, { id: token._id});
-      console.log(session);
+      // console.log(token);
+      Object.assign(session, { id: token._id , _id: token.id});
+      // console.log(session);
       return session;
 
     },
